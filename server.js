@@ -1,9 +1,6 @@
 const express = require("express");
 const path = require("path");
 
-// Simple way to define __dirname in CommonJS
-//const __dirname = path.resolve();
-
 const app = express();
 const port = process.env.PORT || 3000;
 
@@ -156,77 +153,7 @@ const videos = [
     duration: "19:52",
     uploadDate: "2023-02-12T00:00:00Z",
   },
-  // ... rest of your videos array ...
 ];
-
-// Sample comments data
-const comments = {
-  // ... your comments object ...
-  1: [
-    {
-      id: 1,
-      videoId: 1,
-      username: "WebDev_Enthusiast",
-      avatarUrl:
-        "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80",
-      comment:
-        "This tutorial was exactly what I needed to start my web development journey! The project-based approach made learning so much easier.",
-      likes: 245,
-      dislikes: 3,
-      postedDate: "2023-01-16T15:32:00Z",
-    },
-    {
-      id: 2,
-      videoId: 1,
-      username: "CodeNewbie2023",
-      avatarUrl:
-        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80",
-      comment:
-        "I've been struggling with understanding full stack development but this video explained everything so clearly. Thank you!",
-      likes: 178,
-      dislikes: 1,
-      postedDate: "2023-01-17T08:45:00Z",
-    },
-    {
-      id: 3,
-      videoId: 1,
-      username: "TechExplorer",
-      avatarUrl:
-        "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80",
-      comment:
-        "The section about React was particularly helpful. Would love to see a deep dive into React hooks in a future video!",
-      likes: 134,
-      dislikes: 2,
-      postedDate: "2023-01-18T12:20:00Z",
-    },
-  ],
-  2: [
-    {
-      id: 4,
-      videoId: 2,
-      username: "AIResearcher",
-      avatarUrl:
-        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80",
-      comment:
-        "As someone working in the field, I appreciate how accurately you explained the math behind neural networks while still making it accessible.",
-      likes: 156,
-      dislikes: 0,
-      postedDate: "2023-02-21T10:12:00Z",
-    },
-    {
-      id: 5,
-      videoId: 2,
-      username: "DataScientist101",
-      avatarUrl:
-        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80",
-      comment:
-        "This explanation of backpropagation is the clearest I've ever seen. Finally making sense of it all!",
-      likes: 103,
-      dislikes: 1,
-      postedDate: "2023-02-22T15:33:00Z",
-    },
-  ],
-};
 
 // API endpoints
 app.get("/api/videos", (req, res) => {
@@ -242,12 +169,6 @@ app.get("/api/videos/:id", (req, res) => {
   }
 
   res.json(video);
-});
-
-app.get("/api/videos/:id/comments", (req, res) => {
-  const id = parseInt(req.params.id);
-  const videoComments = comments[id] || [];
-  res.json(videoComments);
 });
 
 // Catch-all route to serve the index.html
